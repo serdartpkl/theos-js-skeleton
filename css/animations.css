@@ -1,0 +1,66 @@
+/* Optimized Window Animations */
+@keyframes minimizeWindow {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0, 30px, 0) scale(0.8);
+        opacity: 0;
+    }
+}
+
+@keyframes closeWindow {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(0.95);
+        opacity: 0;
+    }
+}
+
+@keyframes removeTaskbarItem {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0, 0, 0) scale(0.9);
+        opacity: 0;
+    }
+}
+
+/* Optimized Window States */
+.window {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.window.minimizing {
+    animation: minimizeWindow 200ms ease-out forwards;
+    pointer-events: none;
+}
+
+.window.closing {
+    animation: closeWindow 150ms ease-out forwards;
+    pointer-events: none;
+}
+
+/* Optimized Taskbar Animation States */
+.taskbar-item {
+    transform: translate3d(0, 0, 0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.taskbar-item.removing {
+    pointer-events: none;
+}
+
+/* Reset transforms */
+.taskbar-item.centered {
+    transform: translate3d(0, 0, 0);
+}

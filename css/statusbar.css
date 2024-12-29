@@ -1,0 +1,64 @@
+.status-bar {
+    height: 40px;
+    background: #f5f5f5;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    font-size: 13px;
+    user-select: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.desktop-container:not(.full-width) .status-bar {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.status-bar-left,
+.status-bar-center,
+.status-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-bar-left {
+    flex: 1;
+}
+
+.status-bar-center {
+    flex: 1;
+    justify-content: center;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+}
+
+.status-bar-right {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+/* Status bar hover effects */
+.status-bar span:hover {
+    opacity: 0.8;
+    cursor: default;
+}
+
+/* Status bar item animations */
+.status-bar-item {
+    transition: opacity 0.2s ease;
+}
+
+/* Status bar shadows and depth */
+.status-bar {
+    position: relative;
+    z-index: 10;
+}
+
+/* Icon styling in status bar */
+.status-bar i {
+    font-size: 16px;
+    margin-right: 4px;
+}

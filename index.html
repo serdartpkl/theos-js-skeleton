@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Window Manager Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+    
+    <!-- Our Styles -->
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/window.css" rel="stylesheet">
+    <link href="css/controls.css" rel="stylesheet">
+    <link href="css/taskbar.css" rel="stylesheet">
+    <link href="css/statusbar.css" rel="stylesheet">
+    <link href="css/utilities.css" rel="stylesheet">
+</head>
+<body>
+    <div id="desktopRoot"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/Window.js"></script>
+    <script type="module" src="js/TaskBar.js"></script>
+    <script type="module" src="js/StatusBar.js"></script>
+    <script type="module" src="js/WindowManager.js"></script>
+    <script type="module" src="js/Desktop.js"></script>
+    <script type="module">
+        import { Desktop } from './js/Desktop.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const desktop = new Desktop({
+                containerId: 'desktopRoot',
+                fullWidth: true,
+                hasStatusbar: true
+            });
+
+            // Default window (all features enabled)
+            desktop.windowManager.createWindow({
+                title: 'Default Window',
+                icon: 'mdi-window-maximize',
+                x: 50,
+                y: 50,
+                width: 400,
+                height: 300,
+                content: '<h2>Default Window</h2><p>All features enabled</p>'
+            });
+
+            // Non-resizable window with toolbar info
+            desktop.windowManager.createWindow({
+                title: 'Non-resizable Window',
+                icon: 'mdi-lock',
+                x: 150,
+                y: 100,
+                width: 350,
+                height: 250,
+                content: '<h2>Non-resizable Window</h2><p>Cannot be resized but has toolbar info</p>',
+                isResizable: false,
+                hasToolbarInfo: true
+            });
+
+            // Window without toolbar info but resizable
+            desktop.windowManager.createWindow({
+                title: 'No Toolbar Info Window',
+                icon: 'mdi-dock-bottom',
+                x: 250,
+                y: 150,
+                width: 400,
+                height: 300,
+                content: '<h2>No Toolbar Info Window</h2><p>No toolbar info but resizable</p>',
+                hasToolbarInfo: false,
+                isResizable: true
+            });
+
+            // Non-draggable window
+            desktop.windowManager.createWindow({
+                title: 'Fixed Position Window',
+                icon: 'mdi-pin',
+                x: 350,
+                y: 200,
+                width: 400,
+                height: 300,
+                content: '<h2>Fixed Position Window</h2><p>Cannot be dragged</p>',
+                isDraggable: false
+            });
+
+            // Non-maximizable window
+            desktop.windowManager.createWindow({
+                title: 'Non-maximizable Window',
+                icon: 'mdi-arrow-expand-all',
+                x: 450,
+                y: 250,
+                width: 400,
+                height: 300,
+                content: '<h2>Non-maximizable Window</h2><p>Cannot be maximized</p>',
+                isMaximizable: false
+            });
+
+            // Window without toolbar (no toolbar info and not resizable)
+            desktop.windowManager.createWindow({
+                title: 'No Toolbar Window',
+                icon: 'mdi-folder',
+                x: 550,
+                y: 300,
+                width: 400,
+                height: 300,
+                content: '<h2>No Toolbar Window</h2><p>No toolbar info and not resizable</p>',
+                hasToolbarInfo: false,
+                isResizable: false
+            });
+
+            // Window with custom min size
+            desktop.windowManager.createWindow({
+                title: 'Custom Min Size Window',
+                icon: 'mdi-resize',
+                x: 650,
+                y: 350,
+                width: 500,
+                height: 400,
+                content: '<h2>Custom Min Size Window</h2><p>Custom minimum dimensions</p>',
+                minWidth: 300,
+                minHeight: 200
+            });
+        });
+    </script>
+</body>
+</html>

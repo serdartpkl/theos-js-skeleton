@@ -1,0 +1,92 @@
+/* Optimized Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Performance Optimized Utility Classes */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overflow-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cursor-move {
+    cursor: move;
+    cursor: grab;
+}
+
+.cursor-resize {
+    cursor: se-resize;
+}
+
+/* GPU Acceleration Utilities */
+.gpu-accelerated {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+.transform-gpu {
+    transform: translate3d(0, 0, 0);
+}
+
+/* Layout Utilities */
+.flex-grow {
+    flex: 1 1 auto;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.w-full {
+    width: 100%;
+}
+
+/* Visibility */
+.hidden {
+    display: none !important;
+}
+
+/* Optimized Transitions */
+.transition-transform {
+    transition: transform 0.2s ease;
+    will-change: transform;
+}
+
+.transition-opacity {
+    transition: opacity 0.2s ease;
+    will-change: opacity;
+}
+
+.transition-all {
+    transition: all 0.2s ease;
+    will-change: transform, opacity;
+}

@@ -1,0 +1,91 @@
+/* Taskbar Container */
+.taskbar {
+    height: 40px;
+    background: #f5f5f5;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    z-index: 1000;
+    border-top: 1px solid #ddd;
+}
+
+/* Add border radius only when not in full-width mode */
+.desktop-container:not(.full-width) .taskbar {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Tasks Container */
+.taskbar-tasks {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    max-width: 80%;
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* Taskbar Items */
+.taskbar-item {
+    padding: 5px 12px;
+    background: white;
+    color: #666;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.taskbar-item i {
+    font-size: 16px;
+    min-width: 16px;
+}
+
+.taskbar-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.taskbar-item:hover:not(.active) {
+    background: #f8f8f8;
+    transform: scale(1.05);
+}
+
+.taskbar-item.active {
+    background: white;
+    box-shadow: inset 0 -2px 0 #666;
+}
+
+.taskbar-item.minimized {
+    opacity: 0.7;
+}
+
+/* Taskbar animation states */
+.taskbar-item.removing {
+    animation: removeTaskbarItem 100ms ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes removeTaskbarItem {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+}

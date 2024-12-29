@@ -1,0 +1,69 @@
+/* Make sure all elements use border-box */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #666666;
+    font-family: 'Rubik', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.desktop-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.desktop-container.with-padding {
+    padding: 16px;
+}
+
+.window-container {
+    position: relative;
+    flex: 1;
+    background: #fafafa;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.desktop-container:not(.full-width) .window-container {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.desktop-container:not(.full-width).has-status-bar .window-container {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* Performance optimizations for containers */
+.window-container > * {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+}
+
+/* Optimize repaints for status bar changes */
+.desktop-container.has-status-bar {
+    will-change: padding-top;
+}
+
+/* Optimize repaints for window container */
+.window-container:not(.dragging) {
+    transition: transform 0.2s ease;
+}
+
+/* Hardware acceleration for full-width mode */
+.desktop-container.full-width {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}

@@ -1,0 +1,87 @@
+/* Window Controls - Optimized */
+.window-controls {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    z-index: 1;
+    will-change: transform;
+}
+
+.window-control {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.control-close {
+    background: #ff5f56;
+    border: 1px solid #e0443e;
+}
+
+.control-minimize {
+    background: #ffbd2e;
+    border: 1px solid #dea123;
+}
+
+.control-maximize {
+    background: #27c93f;
+    border: 1px solid #1aab29;
+}
+
+/* Optimized Control button hover effects */
+.control-close::before,
+.control-minimize::before,
+.control-maximize::before {
+    content: "";
+    position: absolute;
+    top: 56%;
+    left: 56%;
+    transform: translate3d(-56%, -56%, 0);
+    opacity: 0;
+    will-change: opacity;
+    transition: opacity 0.2s ease;
+}
+
+.control-close::before {
+    content: "×";
+    font-size: 14px;
+    color: #4a0002;
+}
+
+.control-minimize::before {
+    content: "−";
+    font-size: 14px;
+    color: #5a4701;
+}
+
+.control-maximize::before {
+    content: "+";
+    font-size: 14px;
+    color: #0b4201;
+}
+
+.window:hover .window-control::before {
+    opacity: 0.5;
+}
+
+.window-control:hover::before {
+    opacity: 1 !important;
+}
+
+/* Optimized hover states */
+.window-control:hover {
+    transform: translate3d(0, 0, 0) scale(1.1);
+}
+
+/* Active states */
+.window-control:active {
+    transform: translate3d(0, 0, 0) scale(0.95);
+}
